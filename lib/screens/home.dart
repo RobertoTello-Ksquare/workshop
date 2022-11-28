@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/provider.dart';
 import 'package:provider_class/controllers/theme_mode_provider.dart';
+import 'package:provider_class/screens/second_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -14,17 +15,15 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: modeThemeProvider.primaryColor,
       ),
-      body: Container(
-        color: modeThemeProvider.backgroundColor,
-      ),
-      floatingActionButton: FloatingActionButton(
-          backgroundColor:modeThemeProvider.primaryColor,
-          child: modeThemeProvider.iconFloatingElevationButton,
-          onPressed: () {
-            modeThemeProvider.primaryColor == Colors.orange
-            ? modeThemeProvider.changeThemeToDark()
-            : modeThemeProvider.changeThemeToLight();
-          }),
-    );
+      body: Center(
+        child: Container(
+            color: modeThemeProvider.backgroundColor,
+            child: ElevatedButton(onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const SecondScreen()),);
+            },
+            child: const Text('Next Screen'),),),
+      ),);
+        
+      
   }
 }
